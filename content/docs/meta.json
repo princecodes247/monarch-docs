@@ -1,0 +1,11 @@
+{
+  "pages": [
+    "index",
+    "features",
+    "quick-start",
+    "under-the-hood",
+    "examples",
+    "...",
+    "apis"
+  ]
+}

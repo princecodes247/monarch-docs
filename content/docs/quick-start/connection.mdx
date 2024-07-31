@@ -1,0 +1,41 @@
+---
+title: Connection
+description: Features
+---
+
+Create a database instance using any client you deem fit and drop it into the createDatabase function
+
+Or you can use the built-in createClient function.
+
+Then you pass your schemas to the second arguement
+
+```typescript
+const { collections } = createDatabase(client, {
+  users: UserSchema,
+});
+```
+
+## Alternative setup
+You can also decentralize the models
+
+```typescript
+const { db } = createDatabase(client);
+
+const UserSchema = createSchema("users", {
+  name: string(),
+  isVerified: boolean(),
+});
+
+const UserModel = db(UserSchema);
+export default UserModel;
+```
+
+And use it like this
+
+```typescript
+const user = await UserModel.findOne({
+  name: "Alice"
+}).exec();
+console.log(users);
+```
+   

@@ -1,0 +1,24 @@
+---
+title: Type Modifiers
+description: Your first document
+---
+
+
+
+
+## General Modifiers
+
+ - `.nullable()`: Allows the field to accept null values.
+ - `.default()`: Sets a default value if none is provided.
+ - `.optional()`: Makes the field optional, allowing it to be omitted.
+
+
+## String Modifiers
+ - `.lowercase()`: Transforms the value to lowercase before storing.
+ - `.uppercase()`: Transforms the value to uppercase before storing.
+
+```typescript
+const UserSchema = createSchema("users", {
+  name: string().lowercase(),
+});
+```
