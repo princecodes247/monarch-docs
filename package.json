@@ -8,12 +8,19 @@
     "start": "next start"
   },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.1.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.3.19",
     "fumadocs-core": "13.0.1",
     "fumadocs-mdx": "9.0.0",
     "fumadocs-ui": "13.0.1",
+    "lucide-react": "^0.418.0",
     "next": "^14.2.5",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "tailwind-merge": "^2.4.0",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@types/mdx": "^2.0.13",
