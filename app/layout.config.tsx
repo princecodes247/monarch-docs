@@ -22,23 +22,23 @@ export const docsOptions: DocsLayoutProps = {
   ...baseOptions,
   tree: pageTree,
   sidebar: {
-    banner: (
-      <RootToggle
-        options={[
-          {
-            icon: <></>,
-            title: 'Core Docs',
-            description: 'Documentation for Monarch ORM',
-            url: '/docs',
-          },
-          {
-            icon: <></>,
-            title: 'Folder 2',
-            description: 'Pages in folder 2',
-            url: '/docs/studio',
-          },
-        ]}
-      />
-    ),
+    // banner: (
+    //   <RootToggle
+    //     options={[
+    //       {
+    //         icon: <></>,
+    //         title: 'Core Docs',
+    //         description: 'Documentation for Monarch ORM',
+    //         url: '/docs',
+    //       },
+    //       {
+    //         icon: <></>,
+    //         title: 'Folder 2',
+    //         description: 'Pages in folder 2',
+    //         url: '/docs/studio',
+    //       },
+    //     ]}
+    //   />
+    // ),
   }
 };

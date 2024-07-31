@@ -1,3 +1,10 @@
 {
-    "title": "Quick Start"
+    "title": "Quick Start",
+    "pages": [
+        "installation",
+        "usage",
+        "connection",
+        "types",
+        "..."
+      ]
   }
