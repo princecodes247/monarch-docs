@@ -1,10 +1,9 @@
 {
     "title": "Quick Start",
     "pages": [
-        "installation",
+        "index",
+        "setup",
         "usage",
-        "connection",
-        "types",
         "..."
       ]
   }

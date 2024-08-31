@@ -46,6 +46,16 @@ const UserSchema = createSchema("users", {
 });
 ```
 
+
+### General Modifiers
+
+ - `.nullable()`: Allows the field to accept null values.
+ - `.default()`: Sets a default value if none is provided.
+ - `.optional()`: Makes the field optional, allowing it to be omitted.
+
+## Dates
+
+
 ### Date - date()
 
 Defines a field that accepts JavaScript Date objects.
@@ -64,12 +74,6 @@ const UserSchema = createSchema("users", {
   registrationDate: dateString(),
 });
 ```
-
-### General Modifiers
-
- - `.nullable()`: Allows the field to accept null values.
- - `.default()`: Sets a default value if none is provided.
- - `.optional()`: Makes the field optional, allowing it to be omitted.
 
 ## Literals
 

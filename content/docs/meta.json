@@ -2,9 +2,10 @@
   "pages": [
     "index",
     "quick-start",
+    "schema",
     "examples",
     "...",
-    "apis",
+    "references",
     "more"
   ]
 }
