@@ -1,26 +1,16 @@
 # monarch-docs
 
-This is a Next.js application generated with
-[Create Fumadocs](https://github.com/fuma-nama/fumadocs).
+This is the documentation for the next-gen type-safe mongodb ODM.
 
-Run development server:
+## TODO
 
-```bash
-npm run dev
-# or
-pnpm dev
-# or
-yarn dev
-```
-
-Open http://localhost:3000 with your browser to see the result.
-
-## Learn More
-
-To learn more about Next.js and Fumadocs, take a look at the following
-resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js
-  features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [Fumadocs](https://fumadocs.vercel.app) - learn about Fumadocs
+- [ ] Overview - Add Graphics, logo and Speed charts
+- [x] Installation - Done for now, but should include setup for other stuff.
+- [x] Usage
+- [ ] Connections - Rename to Setup and add initial schema setup.
+- [ ] Types - Add new types
+- [ ] Types Modifiers - Rename to Type methods and add all of them.
+- [ ] Populate
+- [ ] Examples - Add in page examples and real links.
+- [ ] Comparisation - Add in page examples and real links.
+- [x] Under the hood
