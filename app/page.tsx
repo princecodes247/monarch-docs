@@ -1,39 +1,60 @@
 import Link from 'next/link';
 import Hero from './_components/hero';
 import Hero2 from './_components/hero2';
+import SectionHeader from './_components/section-header';
+import { Button } from '@/components/ui/button';
+import { ChevronRight, Code, Cpu, Database, Rocket, Shield, Sparkles, Zap } from 'lucide-react';
+import FeatureCard from './_components/feature-card';
+import ComparisonRow from './_components/comparison-row';
 
 export default function HomePage() {
   return (
     <main>
-      {/* <Hero/> */}
-      <Hero2/>
-      <section className="section w-full  mt-0 relative">
-        <h2>Features</h2>
-        <div>
+      <Hero/>
+      {/* <Hero2/> */}
+      <section className="container mx-auto px-4 py-20 flex flex-col lg:flex-row items-center justify-between">
+       
+        <div className="lg:w-1/2 relative">
+          <div className="code-window w-full max-w-2xl mx-auto">
+            <div className="code-window-header">
+              <div className="flex space-x-2">
+                <div className="code-dot code-dot-red"></div>
+                <div className="code-dot code-dot-yellow"></div>
+                <div className="code-dot code-dot-green"></div>
+              </div>
+            </div>
+            <div className="p-4 text-sm">
+              <pre className="">
+                <code>{`
+// Define your schema
+const User = monarch.schema('User', {
+  name: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
+  age: { type: Number, min: 18 },
+});
 
-          <div>
-            <h3>Type Safety</h3>
-            <p>Ensure your code is reliable with strong type enforcement.</p>
+// Use it with full type safety
+const newUser = await User.create({
+  name: 'John Doe',
+  email: 'john@example.com',
+  age: 25,
+});
+
+// Enjoy autocompletion and type checking
+console.log(newUser.name); // John Doe
+                `}</code>
+              </pre>
+            </div>
           </div>
-          <div>
-            <h3>Schema Flexibility</h3>
-            <p>Work with dynamic or fixed schemas, your choice.</p>
-          </div>
-          <div>
-            <h3>Direct MongoDB Queries</h3>
-            <p>Get full control with direct query access when you need it.</p>
-          </div>
-          <div>
-            <h3>Seamless Integration</h3>
-            <p>Easy to integrate with existing codebases and tools.</p>
-          </div>
+        </div>
+      </section>
+{/* 
+      <section className="section w-full  mt-0 relative">
+        <div className='flex flex-wrap gap-8'>
+      
           <div>
             <h3>Lean and Efficient</h3>
             <p>No unnecessary overhead, just the features you need.</p>
-          </div>
-          <div>
-            <h3>Framework-Agnostic</h3>
-            <p>Seamlessly integrates with any framework in the JavaScript ecosystem.</p>
           </div>
           <div>
             <h3>Framework-Agnostic</h3>
@@ -45,79 +66,151 @@ export default function HomePage() {
           </div>
         </div>
 
+      </section> */}
+      <section className="container mx-auto px-4 py-20 mb-32">
+        <h2 className="section-header">Why Choose Monarch?</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <FeatureCard
+            icon={<Zap className="h-8 w-8" />}
+            title="Lightning Fast"
+            description="Optimized queries and efficient caching for blazing-fast performance."
+          />
+          <FeatureCard
+            icon={<Shield className="h-8 w-8" />}
+            title="Type-Safe"
+            description="Full TypeScript support with static type checking for your MongoDB schemas."
+          />
+          <FeatureCard
+            icon={<Code className="h-8 w-8" />}
+            title="Developer Friendly"
+            description="Intuitive API with excellent IDE support for a smooth development experience."
+          />
+          <FeatureCard
+            icon={<Database className="h-8 w-8" />}
+            title="Seamless Integration"
+            description="Define complex schemas with ease, including nested objects and arrays."
+          />
+          <FeatureCard
+            icon={<Sparkles className="h-8 w-8" />}
+            title="Auto-completion"
+            description="Enjoy intelligent auto-completion for your models and queries."
+          />
+          <FeatureCard
+            icon={<Rocket className="h-8 w-8" />}
+            title="Easy Migration"
+            description="Seamlessly migrate from other ORMs with our compatibility layer."
+          />
+        </div>
       </section>
-      <section className="section w-full  mt-0 relative">
+      {/* <section className="section w-full  mt-0 relative">
       <h2>Speed That Surpasses Expectations</h2>
       <p>Our ORM is meticulously optimized for high performance. Compare it to the leading ORMs like Mongoose and Prisma, and see how it consistently outperforms in query execution, startup time, and memory usage.</p>
+      </section> */}
+      <section className="container mx-auto px-4 py-20 mb-32">
+        <h2 className="text-4xl font-bold mb-12 text-center neon-text">Unmatched Speed</h2>
+        <div className="flex flex-col gap-12 items-center justify-between">
+          <div className="lg:w-1/2 mb-10 lg:mb-0">
+            <p className="text-xl mb-8 text-muted-foreground">
+              Monarch ORM outperforms other popular ODMs and ORMs, providing lightning-fast query execution and minimal overhead.
+            </p>
+            <div className="space-y-4">
+              <div className="flex items-center">
+                <div className="w-32 text-right mr-4">Monarch ORM</div>
+                <div className="w-full bg-secondary/30 rounded">
+                  <div className="bg-primary h-4 rounded" style={{ width: '100%' }}></div>
+                </div>
+              </div>
+              <div className="flex items-center">
+                <div className="w-32 text-right mr-4">Prisma</div>
+                <div className="w-full bg-secondary/30 rounded">
+                  <div className="bg-primary/60 h-4 rounded" style={{ width: '70%' }}></div>
+                </div>
+              </div>
+              <div className="flex items-center">
+                <div className="w-32 text-right mr-4">Mongoose</div>
+                <div className="w-full bg-secondary/30 rounded">
+                  <div className="bg-primary/40 h-4 rounded" style={{ width: '60%' }}></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="lg:w-1/2 relative">
+            {/* <Cpu className="w-64 h-64 text-primary animate-spin-slow" /> */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <span className="text-4xl font-bold">2x Faster</span>
+            </div>
+          </div>
+        </div>
       </section>
-      <section className="section w-full  mt-0 relative">
-      <h2>Why Choose Us Over Mongoose and Prisma?</h2>
-      <p>
-      While Mongoose and Prisma are powerful tools, they come with trade-offs in performance and type-safety. Our ORM is built to deliver only what you need—no more, no less.
-      </p>
-
-Comparison Table:
-
-<table className="w-full mt-4">
-  <thead>
-    <tr>
-      <th className="border px-4 py-2">Feature</th>
-      <th className="border px-4 py-2">Our ORM</th>
-      <th className="border px-4 py-2">Mongoose/Prisma</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td className="border px-4 py-2">Type Safety</td>
-      <td className="border px-4 py-2">Full</td>
-      <td className="border px-4 py-2">Partial</td>
-    </tr>
-    <tr>
-      <td className="border px-4 py-2">Performance</td>
-      <td className="border px-4 py-2">X% Faster</td>
-      <td className="border px-4 py-2">Standard</td>
-    </tr>
-    <tr>
-      <td className="border px-4 py-2">Size</td>
-      <td className="border px-4 py-2">Lightweight</td>
-      <td className="border px-4 py-2">Heavy</td>
-    </tr>
-    <tr>
-      <td className="border px-4 py-2">Startup Time</td>
-      <td className="border px-4 py-2">10ms</td>
-      <td className="border px-4 py-2">3 seconds</td>
-    </tr>
-    <tr>
-      <td className="border px-4 py-2">Memory Footprint</td>
-      <td className="border px-4 py-2">Significantly reduced, with minimal dependencies</td>
-      <td className="border px-4 py-2">Standard</td>
-    </tr>
-  </tbody>
-</table>
-
+      <section className="mb-32 relative overflow-hidden">
+        <div className="container max-w-screen-lg mx-auto px-4">
+          <h2 className="section-header">Monarch ORM vs. Others</h2>
+          <div className="overflow-x-auto">
+            <table className="w-full">
+              <thead>
+                <tr>
+                  <th className="p-4 bg-[#101320] md:
+                  bg-secondary/50">Features</th>
+                  <th className="p-4 bg-[#101320] md:
+                  bg-secondary/50">Monarch ORM</th>
+                  <th className="p-4 bg-[#101320] md:
+                  bg-secondary/50">Mongoose</th>
+                  <th className="p-4 bg-[#101320] md:
+                  bg-secondary/50">Prisma</th>
+                  <th className="p-4 bg-[#101320] md:
+                  bg-secondary/50">Drizzle</th>
+                </tr>
+              </thead>
+              <tbody>
+                <ComparisonRow
+                  feature="Type Safety"
+                  monarch={true}
+                  mongoose={false}
+                  prisma={true}
+                  drizzle={true}
+                />
+                <ComparisonRow
+                  feature="MongoDB Support"
+                  monarch={true}
+                  mongoose={true}
+                  prisma={true}
+                  drizzle={false}
+                />
+                <ComparisonRow
+                  feature="Query Performance"
+                  monarch={true}
+                  mongoose={false}
+                  prisma={false}
+                  drizzle={true}
+                />
+                <ComparisonRow
+                  feature="Schema Flexibility"
+                  monarch={true}
+                  mongoose={true}
+                  prisma={false}
+                  drizzle={true}
+                />
+                <ComparisonRow
+                  feature="IDE Autocompletion"
+                  monarch={true}
+                  mongoose={false}
+                  prisma={true}
+                  drizzle={true}
+                />
+              </tbody>
+            </table>
+          </div>
+        </div>
       </section>
+
+{/*       
 
       <section className="section w-full  mt-0 relative">
       <h2>When should you really use Monarch?</h2>
       <p>Lol. Everytime you use MongoDB.</p>
       <p>Monarch is perfect for every MongoDB project, Whether you're building microservices, a complex enterprise application, or a simple API, our ORM fits your needs. It's designed for projects where speed, reliability, and simplicity are paramount.</p>
-      </section>
-
-      <section className="section w-full  mt-0 relative">
-      
-      <h2>Start Coding in FIVE seconds</h2>
-      <p>Getting started with our ORM is a breeze. With clear documentation and easy-to-follow examples, you'll be up and running in no time.</p>
-
-    <div>
-    Steps:
-
-Install via npm/yarn
-Configure your MongoDB connection
-Define your models
-Start querying with confidence
-    </div>
-      </section>
-
+      </section> */}
+{/* 
       <section className="section w-full  mt-0 relative">
       <h2>Join the amazing Community</h2>
 <p>Get the help you need, when you need it. Whether it's through our documentation, GitHub discussions, or community Slack, support is always available.</p>
@@ -126,19 +219,73 @@ Documentation
 GitHub Repository
 Community Slack/Discord
 </div>
+      </section> */}
+        {/* Ready to Build Faster Section */}
+        <section className="container mx-auto px-4 py-20 mb-32 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 backdrop-blur-xl rounded-3xl"></div>
+        <div className="relative z-10 text-center">
+          <h2 className="section-header tracking-tight text-5xl">Ready to Build Faster?</h2>
+          <p className="text-xl mb-12 text-muted-foreground max-w-2xl mx-auto">
+            Try our ORM today and experience the difference. Whether you're migrating from another tool or starting fresh, you'll love the simplicity and speed.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Button size="lg" className="min-w-[200px]">
+            Start Building Now
+              <ChevronRight className="ml-2 h-4 w-4" />
+            </Button>
+            <Button size="lg" variant="outline" className="min-w-[200px]">
+              Join our Community
+            </Button>
+            <Button size="lg" variant="secondary" className="min-w-[200px]">
+              See the Benchmarks
+            </Button>
+          </div>
+        </div>
       </section>
 
-      <section className="section w-full  mt-0 relative">
-      <h2>Ready to Build Faster?</h2>
-<p>Try our ORM today and experience the difference. Whether you're migrating from another tool or starting fresh, you'll love the simplicity and speed.</p>
+      {/* CTA Section */}
+      {/* <section className="container mx-auto px-4 text-center mb-32">
+        <h2 className="text-4xl font-bold mb-8 neon-text">Revolutionize Your MongoDB Experience</h2>
+        <p className="text-xl mb-12 text-muted-foreground">
+          Join thousands of developers who have already made the switch to Monarch ORM.
+        </p>
+        <Button size="lg">
+          Start Building Now
+          <ChevronRight className="ml-2 h-4 w-4" />
+        </Button>
+      </section> */}
 
-<div>
-
-"Get Started Now"
-"View Documentation"
-"See the Benchmarks"
-</div>
-      </section>
+      {/* Footer */}
+      <footer className="bg-secondary/30 py-12">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-wrap justify-between">
+            <div className="w-full md:w-1/3 mb-8 md:mb-0">
+              <h3 className="text-2xl font-bold mb-4">Monarch ORM</h3>
+              <p className="text-muted-foreground">Empowering developers with type-safe MongoDB interactions.</p>
+            </div>
+            <div className="w-full md:w-1/3 mb-8 md:mb-0">
+              <h4 className="text-xl font-semibold mb-4">Quick Links</h4>
+              <ul className="space-y-2">
+                <li><a href="#" className="text-muted-foreground hover:text-primary">Documentation</a></li>
+                <li><a href="#" className="text-muted-foreground hover:text-primary">API Reference</a></li>
+                <li><a href="#" className="text-muted-foreground hover:text-primary">Examples</a></li>
+                <li><a href="#" className="text-muted-foreground hover:text-primary">Blog</a></li>
+              </ul>
+            </div>
+            <div className="w-full md:w-1/3">
+              <h4 className="text-xl font-semibold mb-4">Connect</h4>
+              <ul className="space-y-2">
+                <li><a href="#" className="text-muted-foreground hover:text-primary">GitHub</a></li>
+                <li><a href="#" className="text-muted-foreground hover:text-primary">Twitter</a></li>
+                <li><a href="#" className="text-muted-foreground hover:text-primary">Discord</a></li>
+              </ul>
+            </div>
+          </div>
+          <div className="mt-12 text-center text-muted-foreground">
+            <p>&copy; 2023 Monarch ORM. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
     </main>
   );
 }
