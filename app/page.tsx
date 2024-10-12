@@ -90,7 +90,7 @@ export default function HomePage() {
       <p>Our ORM is meticulously optimized for high performance. Compare it to the leading ORMs like Mongoose and Prisma, and see how it consistently outperforms in query execution, startup time, and memory usage.</p>
       </section> */}
       <section className="container mx-auto px-4 py-20 mb-32">
-        <h2 className="section-header text-5xl">Unmatched Speed</h2>
+        <h2 className="section-header">Unmatched Speed</h2>
         <div className="flex flex-col gap-12 items-center justify-between">
           <div className="lg:w-1/2 mb-10 lg:mb-0">
             <p className="text-xl mb-8 text-muted-foreground">
@@ -98,21 +98,21 @@ export default function HomePage() {
             </p>
             <div className="space-y-4">
               <div className="flex items-center">
-                <div className="w-32 text-right mr-4">Monarch ORM</div>
-                <div className="w-full bg-secondary/30 rounded">
-                  <div className="bg-primary h-4 rounded" style={{ width: '100%' }}></div>
+                <div className="w-32 text-right mr-4 text-nowrap">Monarch ORM</div>
+                <div className="w-full bg-secondary/30">
+                  <div className="bg-primary h-4" style={{ width: '100%' }}></div>
                 </div>
               </div>
               <div className="flex items-center">
                 <div className="w-32 text-right mr-4">Prisma</div>
-                <div className="w-full bg-secondary/30 rounded">
-                  <div className="bg-gray-400/60 h-4 rounded" style={{ width: '70%' }}></div>
+                <div className="w-full bg-secondary/30">
+                  <div className="bg-gray-400/60 h-4" style={{ width: '70%' }}></div>
                 </div>
               </div>
               <div className="flex items-center">
                 <div className="w-32 text-right mr-4">Mongoose</div>
-                <div className="w-full bg-secondary/30 rounded">
-                  <div className="bg-gray-400/30 h-4 rounded" style={{ width: '60%' }}></div>
+                <div className="w-full bg-secondary/30">
+                  <div className="bg-gray-400/30 h-4" style={{ width: '60%' }}></div>
                 </div>
               </div>
             </div>

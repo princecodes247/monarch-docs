@@ -7,14 +7,18 @@ const codeSnippets = [
     title: "Basic Schema",
     code: `
 // Define your schema
-const User = monarch.schema('User', {
-  name: { type: String, required: true },
-  email: { type: String, required: true, unique: true },
-  age: { type: Number, min: 18 },
+const UserSchema = createSchema("users", {
+  name: string(),
+  email: string(),
+  age: number(),
+});
+
+const { collections } = createDatabase(client, {
+  users: UserSchema,
 });
 
 // Use it with full type safety
-const newUser = await User.create({
+const newUser = await collections.users.insert({
   name: 'John Doe',
   email: 'john@example.com',
   age: 25,
@@ -28,7 +32,7 @@ console.log(newUser.name); // John Doe
     title: "Advanced Query",
     code: `
 // Perform complex queries with type safety
-const result = await User.find({
+const result = await collections.users.find({
   age: { $gte: 18, $lte: 65 },
   'address.city': 'New York'
 })
