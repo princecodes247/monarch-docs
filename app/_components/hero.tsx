@@ -10,7 +10,7 @@ import HeroBg from "./hero-bg";
 export default function Hero() {
   return (
     <>
-      <section className=" section min-h-[700px] w-full flex flex-col justify-center items-center  mt-0 relative">
+      <section className="overflow-hidden section min-h-[700px] w-full flex flex-col justify-center items-center  mt-0 relative">
        <HeroBg/>
 
           <div className="relative z-10 max-w-4xl text-center  space-y-4">
@@ -52,7 +52,7 @@ export default function Hero() {
             </div>
           </div>
  
-          <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-background to-transparent pointer-events-none"></div>
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent pointer-events-none"></div>
 
       </section>
 

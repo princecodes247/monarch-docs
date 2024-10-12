@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { ChevronRight, Code, Cpu, Database, Rocket, Shield, Sparkles, Zap } from 'lucide-react';
 import FeatureCard from './_components/feature-card';
 import ComparisonRow from './_components/comparison-row';
+import AnimatedCodeSnippet from './_components/animated-code-snippet';
 
 export default function HomePage() {
   return (
@@ -24,26 +25,8 @@ export default function HomePage() {
               </div>
             </div>
             <div className="p-4 text-sm">
-              <pre className="">
-                <code>{`
-// Define your schema
-const User = monarch.schema('User', {
-  name: { type: String, required: true },
-  email: { type: String, required: true, unique: true },
-  age: { type: Number, min: 18 },
-});
-
-// Use it with full type safety
-const newUser = await User.create({
-  name: 'John Doe',
-  email: 'john@example.com',
-  age: 25,
-});
-
-// Enjoy autocompletion and type checking
-console.log(newUser.name); // John Doe
-                `}</code>
-              </pre>
+          <AnimatedCodeSnippet/>
+              
             </div>
           </div>
         </div>
@@ -71,32 +54,32 @@ console.log(newUser.name); // John Doe
         <h2 className="section-header">Why Choose Monarch?</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <FeatureCard
-            icon={<Zap className="h-8 w-8" />}
+            icon={<Zap className="h-8 w-8 stroke-1" />}
             title="Lightning Fast"
             description="Optimized queries and efficient caching for blazing-fast performance."
           />
           <FeatureCard
-            icon={<Shield className="h-8 w-8" />}
+            icon={<Shield className="h-8 w-8 stroke-1" />}
             title="Type-Safe"
             description="Full TypeScript support with static type checking for your MongoDB schemas."
           />
           <FeatureCard
-            icon={<Code className="h-8 w-8" />}
+            icon={<Code className="h-8 w-8 stroke-1" />}
             title="Developer Friendly"
             description="Intuitive API with excellent IDE support for a smooth development experience."
           />
           <FeatureCard
-            icon={<Database className="h-8 w-8" />}
+            icon={<Database className="h-8 w-8 stroke-1" />}
             title="Seamless Integration"
             description="Define complex schemas with ease, including nested objects and arrays."
           />
           <FeatureCard
-            icon={<Sparkles className="h-8 w-8" />}
+            icon={<Sparkles className="h-8 w-8 stroke-1" />}
             title="Auto-completion"
             description="Enjoy intelligent auto-completion for your models and queries."
           />
           <FeatureCard
-            icon={<Rocket className="h-8 w-8" />}
+            icon={<Rocket className="h-8 w-8 stroke-1" />}
             title="Easy Migration"
             description="Seamlessly migrate from other ORMs with our compatibility layer."
           />
@@ -107,7 +90,7 @@ console.log(newUser.name); // John Doe
       <p>Our ORM is meticulously optimized for high performance. Compare it to the leading ORMs like Mongoose and Prisma, and see how it consistently outperforms in query execution, startup time, and memory usage.</p>
       </section> */}
       <section className="container mx-auto px-4 py-20 mb-32">
-        <h2 className="text-4xl font-bold mb-12 text-center neon-text">Unmatched Speed</h2>
+        <h2 className="section-header text-5xl">Unmatched Speed</h2>
         <div className="flex flex-col gap-12 items-center justify-between">
           <div className="lg:w-1/2 mb-10 lg:mb-0">
             <p className="text-xl mb-8 text-muted-foreground">
@@ -123,13 +106,13 @@ console.log(newUser.name); // John Doe
               <div className="flex items-center">
                 <div className="w-32 text-right mr-4">Prisma</div>
                 <div className="w-full bg-secondary/30 rounded">
-                  <div className="bg-primary/60 h-4 rounded" style={{ width: '70%' }}></div>
+                  <div className="bg-gray-400/60 h-4 rounded" style={{ width: '70%' }}></div>
                 </div>
               </div>
               <div className="flex items-center">
                 <div className="w-32 text-right mr-4">Mongoose</div>
                 <div className="w-full bg-secondary/30 rounded">
-                  <div className="bg-primary/40 h-4 rounded" style={{ width: '60%' }}></div>
+                  <div className="bg-gray-400/30 h-4 rounded" style={{ width: '60%' }}></div>
                 </div>
               </div>
             </div>
@@ -137,7 +120,7 @@ console.log(newUser.name); // John Doe
           <div className="lg:w-1/2 relative">
             {/* <Cpu className="w-64 h-64 text-primary animate-spin-slow" /> */}
             <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-4xl font-bold">2x Faster</span>
+              <span className="text-4xl font-bold neon-text">2x Faster</span>
             </div>
           </div>
         </div>
@@ -149,16 +132,11 @@ console.log(newUser.name); // John Doe
             <table className="w-full">
               <thead>
                 <tr>
-                  <th className="p-4 bg-[#101320] md:
-                  bg-secondary/50">Features</th>
-                  <th className="p-4 bg-[#101320] md:
-                  bg-secondary/50">Monarch ORM</th>
-                  <th className="p-4 bg-[#101320] md:
-                  bg-secondary/50">Mongoose</th>
-                  <th className="p-4 bg-[#101320] md:
-                  bg-secondary/50">Prisma</th>
-                  <th className="p-4 bg-[#101320] md:
-                  bg-secondary/50">Drizzle</th>
+                  <th className="p-4 bg-[#101320] md:bg-secondary/50">Features</th>
+                  <th className="p-4 bg-[#101320] md:bg-secondary/50">Monarch ORM</th>
+                  <th className="p-4 bg-[#101320] md:bg-secondary/50">Mongoose</th>
+                  <th className="p-4 bg-[#101320] md:bg-secondary/50">Prisma</th>
+                  <th className="p-4 bg-[#101320] md:bg-secondary/50">Drizzle</th>
                 </tr>
               </thead>
               <tbody>
@@ -221,8 +199,8 @@ Community Slack/Discord
 </div>
       </section> */}
         {/* Ready to Build Faster Section */}
-        <section className="container mx-auto px-4 py-20 mb-32 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 backdrop-blur-xl rounded-3xl"></div>
+        <section className="mx-auto py-20 mb-32 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 backdrop-blur-xl"></div>
         <div className="relative z-10 text-center">
           <h2 className="section-header tracking-tight text-5xl">Ready to Build Faster?</h2>
           <p className="text-xl mb-12 text-muted-foreground max-w-2xl mx-auto">

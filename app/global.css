@@ -85,6 +85,17 @@
   }
   
   
+.feature-card {
+  @apply bg-secondary/30 p-6 rounded-lg backdrop-blur-sm border border-primary/20 transition-all duration-300;
+  @apply hover:border-primary/40 hover:shadow-lg hover:shadow-primary/20;
+  @apply flex flex-col items-start;
+}
+
+.feature-icon-wrapper {
+  @apply mb-3 p-4 rounded-full bg-primary/10 text-primary;
+  @apply transition-all duration-300 group-hover:bg-primary group-hover:text-white;
+}
+
   
   .glow {
     box-shadow: 0 0 10px theme('colors.primary.DEFAULT');
@@ -126,17 +137,6 @@
 
 .float {
   animation: float 5s ease-in-out infinite;
-}
-
-.feature-card {
-  @apply bg-secondary/30 p-8 rounded-lg backdrop-blur-sm border border-primary/20 transition-all duration-300;
-  @apply hover:border-primary/40 hover:shadow-lg hover:shadow-primary/20;
-  @apply flex flex-col items-center text-center;
-}
-
-.feature-icon-wrapper {
-  @apply mb-6 p-4 rounded-full bg-primary/10 text-primary;
-  @apply transition-all duration-300 group-hover:bg-primary group-hover:text-white;
 }
 
 .animation-delay-300 {
@@ -183,4 +183,44 @@ th:first-child, td:first-child {
 
 tr:hover {
   @apply bg-primary/10 transition-colors duration-200;
+}
+
+.animated-code {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 0.15em solid theme('colors.primary.DEFAULT');
+  animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+.animated-code .line {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.animated-code .line:nth-child(1) { animation: typing 2s steps(30, end) 0s 1 normal both; }
+.animated-code .line:nth-child(2) { animation: typing 2s steps(40, end) 2s 1 normal both; }
+.animated-code .line:nth-child(3) { animation: typing 2s steps(50, end) 4s 1 normal both; }
+.animated-code .line:nth-child(4) { animation: typing 2s steps(60, end) 6s 1 normal both; }
+.animated-code .line:nth-child(5) { animation: typing 2s steps(30, end) 8s 1 normal both; }
+.animated-code .line:nth-child(6) { animation: typing 2s steps(20, end) 10s 1 normal both; }
+.animated-code .line:nth-child(7) { animation: typing 2s steps(10, end) 12s 1 normal both; }
+.animated-code .line:nth-child(8) { animation: typing 2s steps(40, end) 14s 1 normal both; }
+.animated-code .line:nth-child(9) { animation: typing 2s steps(30, end) 16s 1 normal both; }
+.animated-code .line:nth-child(10) { animation: typing 2s steps(30, end) 18s 1 normal both; }
+.animated-code .line:nth-child(11) { animation: typing 2s steps(20, end) 20s 1 normal both; }
+.animated-code .line:nth-child(12) { animation: typing 2s steps(10, end) 22s 1 normal both; }
+.animated-code .line:nth-child(13) { animation: typing 2s steps(10, end) 24s 1 normal both; }
+.animated-code .line:nth-child(14) { animation: typing 2s steps(60, end) 26s 1 normal both; }
+.animated-code .line:nth-child(15) { animation: typing 2s steps(50, end) 28s 1 normal both; }
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: theme('colors.primary.DEFAULT') }
 }
