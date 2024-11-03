@@ -7,6 +7,22 @@ Create a database instance using any client you deem fit and drop it into the cr
 
 Or you can use the built-in createClient function.
 
+```typescript
+
+const client = createClient('mongodb://localhost:27017')
+
+```
+
+Define your schemas 
+
+```typescript
+
+ const UserSchema = createSchema("users", {
+      name: string().nullable(),
+    });
+
+```
+
 Then you pass your schemas to the second arguement
 
 ```typescript

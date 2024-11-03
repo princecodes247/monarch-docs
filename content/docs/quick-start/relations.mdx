@@ -1,0 +1,125 @@
+---
+title: Relations
+description: Features
+---
+
+## Introduction
+
+Relations allow you to define how different schemas are connected to each other. By establishing relationships, you can easily manage and query related data across different collections.
+
+For Example:
+
+```typescript
+    // Define schemas
+    const _UserSchema = createSchema("users", {
+      name: string(),
+      isAdmin: boolean(),
+      createdAt: date(),
+      tutor: objectId().optional(),
+      maybe: string().optional(),
+    });
+    const _PostSchema = createSchema("posts", {
+      title: string(),
+      contents: string(),
+      author: objectId(),
+    });
+
+    // Define relations
+    const UserSchema = _UserSchema.relations(({ one, ref }) => ({
+      tutor: one(_UserSchema, "_id").optional(),
+      posts: ref(_PostSchema, "author", "_id"),
+    }));
+    const PostSchema = _PostSchema.relations(({ one, many }) => ({
+      author: one(_UserSchema, "_id"),
+      editor: one(_UserSchema, "_id"),
+      contributors: many(_UserSchema, "_id"),
+    }));
+
+    // Create database collections
+    return createDatabase(client.db(), {
+      users: UserSchema,
+      posts: PostSchema,
+    });
+
+    await collections.posts
+      .insertOne({
+        title: "Pilot",
+        contents: "Lorem",
+        author: user._id,
+        editor: user._id,
+        contributors: [user2._id],
+      })
+      .exec();
+
+    // Fetch and populate post's author using findOne
+    const populatedPost = await collections.posts
+      .findOne({
+        title: "Pilot",
+      })
+      .populate({ author: true, contributors: true, editor: true })
+      .exec();
+```
+
+In the example above, we define a User schema that can have a one-to-one relationship with another User (as a tutor) and a one-to-many relationship with Posts authored by the user. 
+Similarly, the Post schema can reference the User schema for its author, editor, and contributors, enabling efficient data retrieval and manipulation.
+
+## Types of references
+
+The three types of relations in Monarch ORM are `one()`, `many()`, and `ref()`.
+
+1. **one()**: This relation is used to define a one-to-one relationship between two schemas. 
+   For example, in the User schema, a user can have one tutor, which is another user. 
+   This is defined using the `one()` function, allowing you to easily navigate to the related user.
+
+2. **many()**: This relation is used to define a one-to-many relationship. 
+   In the Post schema, a user can be an author of many posts. 
+   This is represented using the `many()` function, which allows you to retrieve all posts associated with a user.
+
+3. **ref()**: This relation is used to create a reference to another schema. 
+   In the User schema, the posts field references the Post schema, indicating that the posts are related to the user through the author field. 
+   The `ref()` function helps in establishing this connection, enabling efficient data retrieval across schemas.
+
+Understanding these relationships is crucial for structuring your data models effectively and ensuring smooth interactions between them.
+
+## Populate
+
+
+The `.populate()` method is a powerful feature that allows you to retrieve related documents from other collections based on defined relationships.
+When you call `.populate()` on a query, it automatically fetches the related data for the specified fields, making it easier to work with complex data structures.
+
+The `.populate()` method in Monarch ORM leverages MongoDB's `$lookup` aggregation stage under the hood to efficiently join documents from different collections.
+When you call `.populate()` on a query, it constructs a `$lookup` operation that specifies the collection to join, the local field to match, and the foreign field in the referenced collection.
+
+For example, if you have a `Post` schema that references a `User` schema for the `author` field, the `$lookup` operation will look something like this:
+```
+const lookupPostAuthor = {
+  $lookup: {
+    from: "users", // The collection to join
+    localField: "author", // The field from the Post schema
+    foreignField: "_id", // The field from the User schema
+    as: "authorDetails" // The name of the new array field to add to the output documents
+  }
+};
+
+const lookupPostContributors = {
+  $lookup: {
+    from: "users", // The collection to join
+    localField: "contributors", // The field from the Post schema
+    foreignField: "_id", // The field from the User schema
+    as: "contributorDetails" // The name of the new array field to add to the output documents
+  }
+};
+
+const lookupPostEditor = {
+  $lookup: {
+    from: "users", // The collection to join
+    localField: "editor", // The field from the Post schema
+    foreignField: "_id", // The field from the User schema
+    as: "editorDetails" // The name of the new array field to add to the output documents
+  }
+};
+
+```
+
+
+
